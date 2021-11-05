@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('Links git to Circle CI to Heroku', (done) => {
+  chai.request(server)
+    .get('/')
+    .end((err, res) => {
+      expect(err).not.exist;
+      expect(JSON.stringify(res.text)).to.contain('LINKED!');
+      done();
+    });
+  });
 })
